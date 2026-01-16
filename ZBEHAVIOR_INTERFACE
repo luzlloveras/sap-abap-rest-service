@@ -1,11 +1,9 @@
-managed;  //implementation in class zbp_interface unique;
-//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+managed;
 
 define behavior for ZINTERFACE alias Empleados
 persistent table zempleados
 lock master
 authorization master ( instance )
-//etag master <field_name>
 {
   field ( readonly, numbering : managed ) e_number;
   create;
