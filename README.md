@@ -1,16 +1,26 @@
-# SAP ABAP REST Service (Employees)
+# ABAP REST Service
 
-This service exposes employee master data from an ABAP system through a
-lightweight REST/OData interface. It exists to show a clean, minimal path
-from CDS data models to a consumable endpoint without extra framework noise.
-Use it when a SAP backend needs to serve employee data to internal tools or
-downstream services in a stable, predictable way.
+This repository contains a minimal ABAP REST service implemented with CDS
+views and the RAP programming model. It focuses on how a service is structured
+and exposed in ABAP, without assuming any specific business domain.
 
-## What this service demonstrates
-- REST exposure in ABAP via CDS projection and service definition
-- Request/response handling through managed RAP behaviors
-- Error handling through standard RAP responses (authorization, locking)
-- Separation of concerns across interface, projection, behavior, and service
+## Implementation overview
+- Interface CDS view as the stable data contract for the service
+- Projection view to shape the public API surface
+- Managed behavior definitions for create/update/delete handling
+- Service definition to expose the projection via REST/OData
+- UI metadata annotations kept separate from the core data model
 
-This repository requires an active ABAP system to run. It focuses on the
-service design and implementation rather than local execution.
+## HTTP handling
+Request and response mapping is handled by the RAP runtime. The service relies
+on standard RAP semantics for entity operations, status codes, and response
+payload structure.
+
+## Error and status handling
+Authorization checks and locking are defined at the behavior layer and returned
+through standard RAP error responses. Status management follows the framework
+conventions to keep API behavior consistent.
+
+## Notes
+Execution requires an active ABAP system. The concrete business entity is not
+verified, so the documentation remains implementation-focused and neutral.
